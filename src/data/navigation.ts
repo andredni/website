@@ -1,11 +1,11 @@
 export const navLinks = {
   de: [
-    { label: 'Daniel', href: '/de/' },
+    { label: 'Über mich', href: '/de/' },
     { label: 'Portfolio', href: '/de/portfolio' },
     { label: 'Projects', href: '/de/projects' },
   ],
   en: [
-    { label: 'Daniel', href: '/en/' },
+    { label: 'About Me', href: '/en/' },
     { label: 'Portfolio', href: '/en/portfolio' },
     { label: 'Projects', href: '/en/projects' },
   ],
