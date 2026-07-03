@@ -9,7 +9,7 @@ export const profile = {
     name: 'Daniel Andres',
     title: 'Softwareentwickler & Systemarchitekt',
     claim: 'Ich baue Systeme, die halten – und Teams, die wachsen.',
-    image: '/images/profile-placeholder.jpg',
+    image: '/images/profile-placeholder.svg',
     socials: {
       github: 'https://github.com/andredni',
     } as SocialLinks,
@@ -23,7 +23,7 @@ export const profile = {
     name: 'Daniel Andres',
     title: 'Software Engineer & System Architect',
     claim: 'I build systems that last – and teams that grow.',
-    image: '/images/profile-placeholder.jpg',
+    image: '/images/profile-placeholder.svg',
     socials: {
       github: 'https://github.com/andredni',
     } as SocialLinks,

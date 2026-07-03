@@ -17,15 +17,15 @@ const path = '/en/';
 >
   <Section>
     <div class="hero">
+      <div class="hero__image">
+        <img src={data.image} alt={data.name} class="profile-image" />
+      </div>
       <div class="hero__text">
         <h1>{data.name}</h1>
         <p class="hero__title">{data.title}</p>
         <p class="claim">{data.claim}</p>
         {data.intro.map((paragraph) => <p>{paragraph}</p>)}
         <SocialLinks links={data.socials} lang={lang} />
-      </div>
-      <div class="hero__image">
-        <img src={data.image} alt={data.name} class="profile-image" />
       </div>
     </div>
   </Section>
@@ -49,8 +49,7 @@ const path = '/en/';
   }
 
   .hero__image {
-    flex-shrink: 0;
-    width: 240px;
+    flex: 0 0 33.333%;
   }
 
   .profile-image {
@@ -60,14 +59,16 @@ const path = '/en/';
     display: block;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .hero {
-      flex-direction: column-reverse;
+      flex-direction: column;
       gap: var(--spacing-lg);
     }
 
     .hero__image {
-      width: 160px;
+      flex: none;
+      width: 50%;
+      max-width: 240px;
     }
   }
 </style>
