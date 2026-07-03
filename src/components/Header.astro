@@ -12,8 +12,12 @@ const { lang, path } = Astro.props;
 
 <header class="header">
   <div class="container header__inner">
-    <Nav lang={lang} currentPath={path} />
-    <LanguageSwitch currentPath={path} />
+    <div />
+    <div class="header__right">
+      <Nav lang={lang} currentPath={path} />
+      <span class="header-separator">|</span>
+      <LanguageSwitch currentPath={path} />
+    </div>
   </div>
 </header>
 
@@ -27,5 +31,16 @@ const { lang, path } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+
+  .header__right {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+  }
+
+  .header-separator {
+    color: var(--color-border);
+    font-size: 0.875rem;
   }
 </style>
