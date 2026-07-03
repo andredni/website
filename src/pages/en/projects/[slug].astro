@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { projects } from '../../../data/projects';
+
+export async function getStaticPaths() {
+  const data = projects.en;
+  return data.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const path = `/en/projects/${project.slug}`;
+---
+
+<BaseLayout
+  lang="en"
+  title={`${project.name} – Daniel Andres`}
+  description={project.description}
+  {path}
+>
+  <article class="detail">
+    <div class="container">
+      <a href="/en/projects" class="detail__back">← Back to Projects</a>
+      <h1 class="detail__title">{project.name}</h1>
+      {project.status && <span class="detail__status">{project.status}</span>}
+
+      <p class="detail__role">{project.role}</p>
+
+      {project.detailDescription.map((p) => (
+        <p>{p}</p>
+      ))}
+
+      {project.highlights && project.highlights.length > 0 && (
+        <>
+          <h2>Highlights</h2>
+          <ul class="detail__highlights">
+            {project.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      <div class="detail__tags">
+        {project.technologies.map((tech) => (
+          <span class="tag">{tech}</span>
+        ))}
+      </div>
+
+      <div class="detail__links">
+        {project.link && (
+          <a href={project.link} target="_blank" rel="noopener noreferrer" class="detail__external">
+            Project site →
+          </a>
+        )}
+        {project.github && (
+          <a href={project.github} target="_blank" rel="noopener noreferrer" class="detail__external">
+            GitHub →
+          </a>
+        )}
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .detail {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .detail__back {
+    display: inline-block;
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.9375rem;
+  }
+
+  .detail__title {
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .detail__status {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.125rem 0.625rem;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #166534;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .detail__role {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .detail__highlights {
+    list-style: disc;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .detail__highlights li {
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .detail__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 999px;
+    background: var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .detail__links {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+
+  .detail__external {
+    font-weight: 500;
+  }
+</style>

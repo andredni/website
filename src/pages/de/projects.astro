@@ -16,6 +16,6 @@ const path = '/de/projects';
   {path}
 >
   <Section title="Projects">
-    {data.map((project) => <ProjectCard project={project} />)}
+    {data.map((project) => <ProjectCard project={project} lang={lang} />)}
   </Section>
 </BaseLayout>

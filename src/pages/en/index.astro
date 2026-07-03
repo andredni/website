@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Section from '../../components/Section.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
 import { profile } from '../../data/profile';
 
 const lang = 'en';
@@ -15,8 +16,58 @@ const path = '/en/';
   {path}
 >
   <Section>
-    <h1>{data.name}</h1>
-    <p class="claim">{data.claim}</p>
-    {data.intro.map((paragraph) => <p>{paragraph}</p>)}
+    <div class="hero">
+      <div class="hero__text">
+        <h1>{data.name}</h1>
+        <p class="hero__title">{data.title}</p>
+        <p class="claim">{data.claim}</p>
+        {data.intro.map((paragraph) => <p>{paragraph}</p>)}
+        <SocialLinks links={data.socials} lang={lang} />
+      </div>
+      <div class="hero__image">
+        <img src={data.image} alt={data.name} class="profile-image" />
+      </div>
+    </div>
   </Section>
 </BaseLayout>
+
+<style>
+  .hero {
+    display: flex;
+    gap: var(--spacing-3xl);
+    align-items: flex-start;
+  }
+
+  .hero__text {
+    flex: 1;
+  }
+
+  .hero__title {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero__image {
+    flex-shrink: 0;
+    width: 240px;
+  }
+
+  .profile-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      flex-direction: column-reverse;
+      gap: var(--spacing-lg);
+    }
+
+    .hero__image {
+      width: 160px;
+    }
+  }
+</style>

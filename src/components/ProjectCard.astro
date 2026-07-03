@@ -3,13 +3,17 @@ import type { ProjectEntry } from '../data/projects';
 
 export interface Props {
   project: ProjectEntry;
+  lang: 'de' | 'en';
 }
 
-const { project } = Astro.props;
+const { project, lang } = Astro.props;
+const detailLabel = lang === 'de' ? 'Details →' : 'Details →';
 ---
 
 <article class="card">
-  <h3 class="card__title">{project.name}</h3>
+  <h3 class="card__title">
+    <a href={`/${lang}/projects/${project.slug}`} class="card__title-link">{project.name}</a>
+  </h3>
   {project.status && <span class="card__status">{project.status}</span>}
   <p class="card__description">{project.description}</p>
   <p class="card__role">{project.role}</p>
@@ -18,11 +22,7 @@ const { project } = Astro.props;
       <span class="tag">{tech}</span>
     ))}
   </div>
-  {project.link && (
-    <a href={project.link} class="card__link" target="_blank" rel="noopener noreferrer">
-      Projekt ansehen →
-    </a>
-  )}
+  <a href={`/${lang}/projects/${project.slug}`} class="card__link">{detailLabel}</a>
 </article>
 
 <style>
@@ -44,6 +44,15 @@ const { project } = Astro.props;
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: var(--spacing-xs);
+  }
+
+  .card__title-link {
+    color: var(--color-text);
+  }
+
+  .card__title-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
   }
 
   .card__status {
