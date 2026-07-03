@@ -1,0 +1,59 @@
+---
+import { navLinks } from '../data/navigation';
+
+export interface Props {
+  lang: 'de' | 'en';
+  currentPath: string;
+}
+
+const { lang, currentPath } = Astro.props;
+const links = navLinks[lang];
+---
+
+<nav class="nav">
+  <ul class="nav__list">
+    {links.map((link) => (
+      <li class="nav__item">
+        <a
+          href={link.href}
+          class:list={{
+            'nav__link': true,
+            'nav__link--active': currentPath === link.href,
+          }}
+        >
+          {link.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .nav__list {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+  }
+
+  .nav__link {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+
+  .nav__link:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .nav__link--active {
+    color: var(--color-text);
+  }
+
+  @media (max-width: 640px) {
+    .nav__list {
+      gap: var(--spacing-md);
+    }
+  }
+</style>

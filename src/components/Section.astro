@@ -1,0 +1,33 @@
+---
+export interface Props {
+  title?: string;
+  id?: string;
+}
+
+const { title, id } = Astro.props;
+---
+
+<section class="section" {id}>
+  <div class="container">
+    {title && <h2 class="section__title">{title}</h2>}
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding: var(--spacing-3xl) 0;
+  }
+
+  .section__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  @media (max-width: 640px) {
+    .section {
+      padding: var(--spacing-2xl) 0;
+    }
+  }
+</style>

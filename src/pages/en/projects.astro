@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { projects } from '../../data/projects';
+
+const lang = 'en';
+const data = projects.en;
+const path = '/en/projects';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Projects – Daniel Andres"
+  description="Projects built, planned, or led by Daniel Andres."
+  {path}
+>
+  <Section title="Projects">
+    {data.map((project) => <ProjectCard project={project} />)}
+  </Section>
+</BaseLayout>

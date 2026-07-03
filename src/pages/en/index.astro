@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import { profile } from '../../data/profile';
+
+const lang = 'en';
+const data = profile.en;
+const path = '/en/';
+---
+
+<BaseLayout
+  lang={lang}
+  title={`${data.name} – ${data.title}`}
+  description="Personal introduction of Daniel Andres – Software Engineer and System Architect."
+  {path}
+>
+  <Section>
+    <h1>{data.name}</h1>
+    <p class="claim">{data.claim}</p>
+    {data.intro.map((paragraph) => <p>{paragraph}</p>)}
+  </Section>
+</BaseLayout>

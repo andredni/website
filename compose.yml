@@ -1,0 +1,19 @@
+name: andredni-website
+
+services:
+  opencode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /workspace
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/workspace:Z
+      - andredni-website-data:/root/.local/share/opencode:Z
+      - andredni-website-config:/root/.config/opencode:Z
+      - ./.tmp/:/tmp:Z
+
+volumes:
+  andredni-website-data:
+  andredni-website-config:

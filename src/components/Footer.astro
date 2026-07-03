@@ -1,0 +1,56 @@
+---
+import { footerLinks } from '../data/navigation';
+
+export interface Props {
+  lang: 'de' | 'en';
+}
+
+const { lang } = Astro.props;
+const links = footerLinks[lang];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <p class="footer__copyright">&copy; {new Date().getFullYear()} Daniel Andres</p>
+    <nav class="footer__nav">
+      <a href={links.impressum.href}>{links.impressum.label}</a>
+      <a href={links.datenschutz.href}>{links.datenschutz.label}</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--spacing-xl) 0;
+    margin-top: var(--spacing-3xl);
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+
+  .footer__copyright {
+    margin: 0;
+    max-width: none;
+  }
+
+  .footer__nav {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+
+  .footer__nav a {
+    color: var(--color-text-muted);
+  }
+
+  .footer__nav a:hover {
+    color: var(--color-text);
+  }
+</style>

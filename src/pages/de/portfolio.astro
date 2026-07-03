@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+import Timeline from '../../components/Timeline.astro';
+import { portfolio } from '../../data/portfolio';
+
+const lang = 'de';
+const data = portfolio.de;
+const path = '/de/portfolio';
+---
+
+<BaseLayout
+  lang={lang}
+  title="Portfolio – Daniel Andres"
+  description="Berufliche Stationen und Kompetenzen von Daniel Andres."
+  {path}
+>
+  <Section title="Portfolio">
+    <Timeline items={data} />
+  </Section>
+</BaseLayout>

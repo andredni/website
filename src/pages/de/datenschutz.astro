@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+
+const path = '/de/datenschutz';
+---
+
+<BaseLayout
+  lang="de"
+  title="Datenschutz – Daniel Andres"
+  description="Datenschutzerklärung der persönlichen Webseite von Daniel Andres."
+  {path}
+>
+  <Section title="Datenschutzerklärung">
+    <h3>Verantwortlicher</h3>
+    <p>
+      Daniel Andres<br />
+      Musterstraße 123<br />
+      12345 Musterstadt<br />
+      E-Mail: kontakt@daniel-andres.com
+    </p>
+
+    <h3>Erhebung und Speicherung personenbezogener Daten</h3>
+    <p>
+      Diese Webseite erhebt keine personenbezogenen Daten. Es werden keine Cookies gesetzt und keine Analysedienste wie Google Analytics verwendet. Beim Aufruf der Seite werden durch den Hosting-Anbieter lediglich technische Zugriffsdaten (IP-Adresse, Zeitpunkt, aufgerufene Seite) verarbeitet, die nach kurzer Zeit automatisch gelöscht werden.
+    </p>
+
+    <h3>Ihre Rechte</h3>
+    <p>
+      Sie haben jederzeit das Recht auf Auskunft über die gespeicherten Daten sowie auf Berichtigung, Löschung oder Einschränkung der Verarbeitung. Wenden Sie sich dazu bitte an die oben genannte E-Mail-Adresse.
+    </p>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,93 @@
+---
+import type { ProjectEntry } from '../data/projects';
+
+export interface Props {
+  project: ProjectEntry;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="card">
+  <h3 class="card__title">{project.name}</h3>
+  {project.status && <span class="card__status">{project.status}</span>}
+  <p class="card__description">{project.description}</p>
+  <p class="card__role">{project.role}</p>
+  <div class="card__tags">
+    {project.technologies.map((tech) => (
+      <span class="tag">{tech}</span>
+    ))}
+  </div>
+  {project.link && (
+    <a href={project.link} class="card__link" target="_blank" rel="noopener noreferrer">
+      Projekt ansehen →
+    </a>
+  )}
+</article>
+
+<style>
+  .card {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .card__title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .card__status {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #166534;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card__description {
+    font-size: 0.9375rem;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card__role {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.125rem 0.5rem;
+    border-radius: 999px;
+    background: var(--color-border);
+    color: var(--color-text-muted);
+  }
+
+  .card__link {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+</style>

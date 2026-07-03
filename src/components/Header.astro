@@ -1,0 +1,31 @@
+---
+import Nav from './Nav.astro';
+import LanguageSwitch from './LanguageSwitch.astro';
+
+export interface Props {
+  lang: 'de' | 'en';
+  path: string;
+}
+
+const { lang, path } = Astro.props;
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <Nav lang={lang} currentPath={path} />
+    <LanguageSwitch currentPath={path} />
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--spacing-md) 0;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+</style>
