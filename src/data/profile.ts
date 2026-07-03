@@ -7,7 +7,7 @@ export interface SocialLinks {
 export const profile = {
   de: {
     name: 'Daniel Andres',
-    title: 'Softwareentwickler & Systemarchitekt',
+    title: 'Enterprise Infrastructure & Cloud Solution Architect',
     claim: 'Ich baue Systeme, die halten – und Teams, die wachsen.',
     image: '/images/profile-placeholder.svg',
     socials: {
@@ -21,7 +21,7 @@ export const profile = {
   },
   en: {
     name: 'Daniel Andres',
-    title: 'Software Engineer & System Architect',
+    title: 'Enterprise Infrastructure & Cloud Solution Architect',
     claim: 'I build systems that last – and teams that grow.',
     image: '/images/profile-placeholder.svg',
     socials: {
