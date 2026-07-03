@@ -20,7 +20,7 @@
   --spacing-2xl: 3rem;
   --spacing-3xl: 4rem;
 
-  --max-width: 48rem;
+  --text-max-width: 65ch;
   --border-radius: 0.5rem;
 }
 
@@ -86,11 +86,11 @@ h3 {
 
 p {
   margin-bottom: var(--spacing-md);
-  max-width: var(--max-width);
+  max-width: var(--text-max-width);
 }
 
 .container {
-  max-width: var(--max-width);
+  width: 100%;
   margin: 0 auto;
   padding: 0 var(--spacing-lg);
 }
