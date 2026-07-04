@@ -38,7 +38,7 @@ jobs:
 
       - run: bun install --frozen-lockfile
       - run: bun run build
-      - run: ls -la functions/ && mkdir -p dist/functions && cp -r functions/* dist/functions/ && ls -la dist/functions/
+      - run: cp _worker.js dist/_worker.js
 
       - name: Deploy to Cloudflare Pages (Production)
         uses: cloudflare/wrangler-action@v3
@@ -65,7 +65,7 @@ jobs:
 
       - run: bun install --frozen-lockfile
       - run: bun run build
-      - run: ls -la functions/ && mkdir -p dist/functions && cp -r functions/* dist/functions/ && ls -la dist/functions/
+      - run: cp _worker.js dist/_worker.js
 
       - name: Deploy Preview to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
